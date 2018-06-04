@@ -8,4 +8,8 @@ public abstract class User {
 	private List<Comment> Comments;
 	private UserType userType;
 
+
+
+public abstract void addComment();
+
 }

@@ -1,12 +1,25 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class User {
 	
 	private String username; 
 	private String email;
 	private String password;
+	private List<Comment> comments;
+	private UserType userType;
+
+	
+	public User (String username, String mail, String pass){
+		this.username = username;
+		this.email = mail;
+		this.comments = new ArrayList<Comment>();
+		this.password = pass;
+		this.userType = new Visitor(); 
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -66,12 +79,18 @@ public abstract class User {
 	}
 
 
-
-	private List<Comment> comments;
-	private UserType userType;
-
-
-
-public abstract void addComment();
+	public void addComment(Comment aComment) {
+		this.getComments().add(aComment);
+		this.getUserType().rank(this.getComments(), this);
+		
+	} 
+	
+	public void removeComment(Comment aComment) {
+		this.getComments().remove(aComment);
+		this.getUserType().rank(this.getComments(), this);
+		
+	}
+	
+	
 
 }

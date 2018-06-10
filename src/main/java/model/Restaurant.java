@@ -5,12 +5,37 @@ import java.util.List;
 
 public class Restaurant {
 	private String name;
-	private Category category;
-	private List<Comment> comments;
+	private Category category; //y Category, jerarquia?
 	private Responsible responsible;
+	private List<Comment> comments;
+	private List<Dish> dishs;
+	private List<Menu> menus;
 	//private  Ubicacion -> de qué forma la representamos??
 	
+	public Restaurant(String name, Responsible responsible) {
+		this.name = name;
+		this.responsible = responsible;
+		this.comments = new ArrayList<Comment>();
+		this.dishs = new ArrayList<Dish>();
+		this.menus = new ArrayList<Menu>();
+	}
 	
+	
+	public List<Dish> getDishs() {
+		return dishs;
+	}
+
+
+	public void setDishs(List<Dish> dishs) {
+		this.dishs = dishs;
+	}
+
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+
 	public Restaurant (String name, Category category, Responsible responsible){
 		
 		this.setName(name);

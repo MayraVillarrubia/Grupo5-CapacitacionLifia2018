@@ -4,6 +4,6 @@ import java.util.List;
 
 public abstract class UserType {
 
-	public abstract void rank(List<Comment> comments, User user);
+	public abstract void rank(List<Comment> commentsOfDishs, List<Comment> commentsOfRestaurants, User user);
 
 }

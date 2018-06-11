@@ -8,15 +8,17 @@ public abstract class User {
 	private String username; 
 	private String email;
 	private String password;
-	private List<Comment> comments;
+	private List<Comment> commentsOfDishs;
+	private List<Comment> commentsOfRestaurants;
 	private UserType userType;
 
 	
 	public User (String username, String mail, String pass){
 		this.username = username;
 		this.email = mail;
-		this.comments = new ArrayList<Comment>();
 		this.password = pass;
+		this.commentsOfDishs = new ArrayList<Comment>();
+		this.commentsOfRestaurants = new ArrayList<Comment>();
 		this.userType = new Visitor(); 
 	}
 	
@@ -24,28 +26,24 @@ public abstract class User {
 		return username;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-
-
+	
 	public UserType getUserType() {
 		return userType;
+	}
+
+	public List<Comment> getCommentsOfDishs() {
+		return commentsOfDishs;
+	}
+	
+	public List<Comment> getCommentsOfRestaurants() {
+		return commentsOfRestaurants;
 	}
 
 
@@ -66,31 +64,48 @@ public abstract class User {
 		this.password = password;
 	}
 
-
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	public void setCommentsOfDishs(List<Comment> comments) {
+		this.commentsOfDishs = comments;
 	}
-
-
+	
+	public void setCommentsOfRestaurants(List<Comment> comments) {
+		this.commentsOfRestaurants = comments;
+	}
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
 
 
-	public void addComment(Comment aComment) {
-		this.getComments().add(aComment);
-		this.getUserType().rank(this.getComments(), this);
-		
+	public void addComment(Comment aComment, List<Comment> listComments) {
+		listComments.add(aComment);
+		this.getUserType().rank(this.getCommentsOfDishs(), this.getCommentsOfRestaurants(), this);	
 	} 
 	
-	public void removeComment(Comment aComment) {
-		this.getComments().remove(aComment);
-		this.getUserType().rank(this.getComments(), this);
+	public void addCommentOfRestaurant(Comment aComment) {
+		this.getCommentsOfRestaurants().add(aComment);
+		this.getUserType().rank(this.getCommentsOfDishs(), this.getCommentsOfRestaurants(), this);
 		
 	}
 	
+	public void removeComment(Comment aComment, List<Comment> listComments) {
+		listComments.remove(aComment);
+		this.getUserType().rank(this.getCommentsOfDishs(),this.getCommentsOfRestaurants(), this);
+		
+	}
 	
-
+	public void makeACommentOfDish(String description, Dish dish) throws DistanceException {
+		Comment com = new Comment(this, description, dish);
+		this.addComment(com, this.getCommentsOfDishs());
+		dish.addComment(com);
+		
+	}
+	
+	public void makeACommentOfRestaurant(String description, Restaurant resto) throws DistanceException {
+		Comment com = new Comment(this, description, resto);
+		this.addComment(com, this.getCommentsOfRestaurants());
+		resto.addComment(com);
+		
+	}
+	
 }

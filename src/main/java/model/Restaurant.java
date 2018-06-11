@@ -12,9 +12,12 @@ public class Restaurant {
 	private List<Menu> menus;
 	//private  Ubicacion -> de qué forma la representamos??
 	
-	public Restaurant(String name, Responsible responsible) {
-		this.name = name;
-		this.responsible = responsible;
+	
+	public Restaurant (String name, Category category, Responsible responsible){
+		
+		this.setName(name);
+		this.setCategory(category);
+		this.setResponsible(responsible);
 		this.comments = new ArrayList<Comment>();
 		this.dishs = new ArrayList<Dish>();
 		this.menus = new ArrayList<Menu>();
@@ -30,56 +33,50 @@ public class Restaurant {
 		this.dishs = dishs;
 	}
 
-
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+	
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-
-
-	public Restaurant (String name, Category category, Responsible responsible){
-		
-		this.setName(name);
-		this.setCategory(category);
-		this.setResponsible(responsible);
-		this.comments = new ArrayList<Comment>();
-	}
-	
 	
 	        /* Getters*/
 	public String getName() {
 		return this.name;
 	}
 	
-	public Category getCategory() {
-		return this.category;
-	}
-	
-	public Responsible getResponsible() {
-		return this.responsible;
-	}
-	
-	public List<Comment> getComments() {
-		return this.comments;
-	}
-	      /* Setters */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Category getCategory() {
+		return this.category;
 	}
 	
 	public void setCategory(Category category) {
 		this.category = category;
 	}
 	
+	public Responsible getResponsible() {
+		return this.responsible;
+	}
+	
 	public void setResponsible(Responsible responsible) {
 		this.responsible = responsible;
 	}
 	
-	/* ************ */
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 	
-	public List<Comment> addComment(Comment aComment) {
+	public void addComment(Comment aComment) {
 		this.getComments().add(aComment);
-		return this.getComments();
-		
 	}
 
 }

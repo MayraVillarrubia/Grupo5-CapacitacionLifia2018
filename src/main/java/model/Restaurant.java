@@ -3,20 +3,22 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant {
+public class Restaurant implements Commentable {
 	private String name;
-	private Category category; //y Category, jerarquia?
+	private TemporalCategory temporalCategory; //y Category, jerarquia?
+	private CategoryByScore categoryByScore;
 	private Responsible responsible;
 	private List<Comment> comments;
 	private List<Dish> dishs;
 	private List<Menu> menus;
-	//private  Ubicacion -> de qué forma la representamos??
+	private Location location;
 	
 	
-	public Restaurant (String name, Category category, Responsible responsible){
+	public Restaurant (String name, Responsible responsible){
 		
 		this.setName(name);
-		this.setCategory(category);
+		//this.setTemporalCategory(new InitialCategory());
+		//this.setCategoryByScore(null); //no tiene puntajes al momento de la creacion 
 		this.setResponsible(responsible);
 		this.comments = new ArrayList<Comment>();
 		this.dishs = new ArrayList<Dish>();
@@ -50,14 +52,26 @@ public class Restaurant {
 		this.name = name;
 	}
 	
-	public Category getCategory() {
-		return this.category;
+	public TemporalCategory getTemporalCategory() {
+		return temporalCategory;
 	}
-	
-	public void setCategory(Category category) {
-		this.category = category;
+
+
+	public void setTemporalCategory(TemporalCategory temporalCategory) {
+		this.temporalCategory = temporalCategory;
 	}
-	
+
+
+	public CategoryByScore getCategoryByScore() {
+		return categoryByScore;
+	}
+
+
+	public void setCategoryByScore(CategoryByScore categoryByScore) {
+		this.categoryByScore = categoryByScore;
+	}
+
+
 	public Responsible getResponsible() {
 		return this.responsible;
 	}

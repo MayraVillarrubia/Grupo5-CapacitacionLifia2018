@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Dish implements Aggregation{
+public class Dish implements Commentable{
 	private String name;
 	private Menu menu;
 	private Restaurant resto;

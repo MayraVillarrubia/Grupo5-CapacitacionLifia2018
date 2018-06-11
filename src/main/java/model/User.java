@@ -8,18 +8,29 @@ public abstract class User {
 	private String username; 
 	private String email;
 	private String password;
+	private UserType userType;
+	private Location location;
 	private List<Comment> commentsOfDishs;
 	private List<Comment> commentsOfRestaurants;
-	private UserType userType;
-
 	
-	public User (String username, String mail, String pass){
-		this.username = username;
-		this.email = mail;
-		this.password = pass;
-		this.commentsOfDishs = new ArrayList<Comment>();
-		this.commentsOfRestaurants = new ArrayList<Comment>();
-		this.userType = new Visitor(); 
+	
+	public User (String username, String mail, String pass, Location location){
+		this.setUsername(username);
+		this.setEmail(mail);
+		this.setPassword(pass);
+		this.setUserType(new Visitor()); 
+		this.setLocation(location); 
+		this.setCommentsOfDishs(new ArrayList<Comment>());
+		this.setCommentsOfRestaurants(new ArrayList<Comment>());
+		
+	}
+	
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	
 	public String getUsername() {

@@ -3,13 +3,13 @@ package model;
 public class Comment {
 	private User user;
 	private String description;
-	private Object relatedWith;
+	private Commentable commentable;
 	
 	//cómo sabemos si es un comentario hecho a un restaurant o a un plato??
-	public Comment(User user, String description, Object object){
+	public Comment(User user, String description, Commentable commentable) {
 		this.user = user;
 		this.description = description;
-		this.relatedWith = object;	
+		this.commentable = commentable;
 	}
 
 	public User getUser() {
@@ -28,12 +28,12 @@ public class Comment {
 		this.description = description;
 	}
 
-	public Object getRelatedWith() {
-		return relatedWith;
+	public Commentable getCommentable() {
+		return commentable;
 	}
 
-	public void setRelatedWith(Object relatedTo) {
-		this.relatedWith = relatedTo;
+	public void setCommentable(Commentable commentable) {
+		this.commentable = commentable;
 	}
 
 }

@@ -4,8 +4,8 @@ public class Responsible extends User{
 	
 	private Restaurant restaurant;
 	
-	public Responsible(String username, String mail, String pass){ 
-		super(username, mail, pass);
+	public Responsible(String username, String mail, String pass, Location location){ 
+		super(username, mail, pass, location);
 	}
 	
 	public Restaurant getRestaurant() {

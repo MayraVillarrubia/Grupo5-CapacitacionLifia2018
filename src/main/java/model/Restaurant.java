@@ -2,12 +2,14 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class Restaurant implements Commentable {
 	private String name;
-	private TemporalCategory temporalCategory; //y Category, jerarquia?
+	private TemporalCategory temporalCategory;
 	private CategoryByScore categoryByScore;
 	private Responsible responsible;
+	private Date dateCreation; //fecha de ingreso al sistema
 	private List<Comment> comments;
 	private List<Dish> dishs;
 	private List<Menu> menus;
@@ -17,15 +19,36 @@ public class Restaurant implements Commentable {
 	public Restaurant (String name, Responsible responsible){
 		
 		this.setName(name);
-		//this.setTemporalCategory(new InitialCategory());
-		//this.setCategoryByScore(null); //no tiene puntajes al momento de la creacion 
+		//this.setTemporalCategory(TemporalCategory.IN_OPENING);
+		this.setCategoryByScore(CategoryByScore.REGULAR); 
 		this.setResponsible(responsible);
-		this.comments = new ArrayList<Comment>();
-		this.dishs = new ArrayList<Dish>();
-		this.menus = new ArrayList<Menu>();
+		this.setDateCreation(new Date());
+		this.setComments(new ArrayList<Comment>());
+		this.setDishs(new ArrayList<Dish>());
+		this.setMenus(new ArrayList<Menu>());
 	}
 	
 	
+	public Date getDateCreation() {
+		return dateCreation;
+	}
+
+
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+
+	public Location getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+
 	public List<Dish> getDishs() {
 		return dishs;
 	}
@@ -91,6 +114,15 @@ public class Restaurant implements Commentable {
 	
 	public void addComment(Comment aComment) {
 		this.getComments().add(aComment);
+	}
+	
+	public void recalculateCategoryByScore() {
+		
+		//los extremos no se pueden alcanzar si el restaurante está en el sistema hace menos de un año
+		
+		//newScore = recorro la lista de comentarios (tengo que considerar los comentarios de los platos?) y hago el promedio con los score
+		//newCategory = armar relacion entre el puntaje obtenido y la categoria
+		//this.setCategoryByScore(categoryByScore);
 	}
 
 }

@@ -105,17 +105,19 @@ public abstract class User {
 		
 	}
 	
-	public void makeACommentOfDish(String description, Dish dish) throws DistanceException {
-		Comment com = new Comment(this, description, dish);
+	public void makeACommentOfDish(String description, Dish dish, Integer score) throws DistanceException {
+		Comment com = new Comment(this, description, dish, score);
 		this.addComment(com, this.getCommentsOfDishs());
 		dish.addComment(com);
 		
 	}
 	
-	public void makeACommentOfRestaurant(String description, Restaurant resto) throws DistanceException {
-		Comment com = new Comment(this, description, resto);
+	public void makeACommentOfRestaurant(String description, Restaurant resto, Integer score) throws DistanceException {
+		Comment com = new Comment(this, description, resto, score);
 		this.addComment(com, this.getCommentsOfRestaurants());
 		resto.addComment(com);
+		resto.recalculateCategoryByScore();
+		
 		
 	}
 	

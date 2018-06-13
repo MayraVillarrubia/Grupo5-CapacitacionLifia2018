@@ -4,12 +4,22 @@ public class Comment {
 	private User user;
 	private String description;
 	private Commentable commentable;
+	private Integer score; //de 1 a 5
 	
-	//cómo sabemos si es un comentario hecho a un restaurant o a un plato??
-	public Comment(User user, String description, Commentable commentable) {
-		this.user = user;
-		this.description = description;
-		this.commentable = commentable;
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
+	
+	public Comment(User user, String description, Commentable commentable, Integer score) {
+		this.setUser(user);
+		this.setDescription(description);
+		this.setCommentable(commentable);
+		this.setScore(score);
 	}
 
 	public User getUser() {

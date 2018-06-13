@@ -1,5 +1,7 @@
 package model;
 
-public class CategoryByScore {
+public enum CategoryByScore {
+	
+	EXCELLENT, GOOD, REGULAR, BAD, HORRIFIC
 
 }

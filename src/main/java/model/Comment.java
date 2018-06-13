@@ -4,22 +4,24 @@ public class Comment {
 	private User user;
 	private String description;
 	private Commentable commentable;
-	private Integer score; //de 1 a 5
-	
-	public Integer getScore() {
-		return score;
-	}
-
-	public void setScore(Integer score) {
-		this.score = score;
-	}
+	private Vote vote; //enum positive, negative, neutral
 
 	
-	public Comment(User user, String description, Commentable commentable, Integer score) {
+
+	public Comment(User user, String description, Commentable commentable, Vote vote) {
 		this.setUser(user);
 		this.setDescription(description);
 		this.setCommentable(commentable);
-		this.setScore(score);
+		this.setVote(vote);
+	}
+	
+
+	public Vote getVote() {
+		return vote;
+	}
+
+	public void setVote(Vote vote) {
+		this.vote = vote;
 	}
 
 	public User getUser() {

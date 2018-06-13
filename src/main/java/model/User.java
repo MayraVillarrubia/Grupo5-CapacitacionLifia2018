@@ -93,11 +93,11 @@ public abstract class User {
 		this.getUserType().rank(this.getCommentsOfDishs(), this.getCommentsOfRestaurants(), this);	
 	} 
 	
-	public void addCommentOfRestaurant(Comment aComment) {
+	/*public void addCommentOfRestaurant(Comment aComment) {
 		this.getCommentsOfRestaurants().add(aComment);
 		this.getUserType().rank(this.getCommentsOfDishs(), this.getCommentsOfRestaurants(), this);
 		
-	}
+	}*/
 	
 	public void removeComment(Comment aComment, List<Comment> listComments) {
 		listComments.remove(aComment);
@@ -105,19 +105,17 @@ public abstract class User {
 		
 	}
 	
-	public void makeACommentOfDish(String description, Dish dish, Integer score) throws DistanceException {
-		Comment com = new Comment(this, description, dish, score);
+	public void makeACommentOfDish(String description, Dish dish, Vote vote) throws DistanceException {
+		Comment com = new Comment(this, description, dish, vote);
 		this.addComment(com, this.getCommentsOfDishs());
 		dish.addComment(com);
 		
 	}
 	
-	public void makeACommentOfRestaurant(String description, Restaurant resto, Integer score) throws DistanceException {
-		Comment com = new Comment(this, description, resto, score);
+	public void makeACommentOfRestaurant(String description, Restaurant resto, Vote vote) throws DistanceException {
+		Comment com = new Comment(this, description, resto, vote);
 		this.addComment(com, this.getCommentsOfRestaurants());
 		resto.addComment(com);
-		resto.recalculateCategoryByScore();
-		
 		
 	}
 	

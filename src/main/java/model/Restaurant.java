@@ -20,7 +20,7 @@ public class Restaurant implements Commentable {
 		
 		this.setName(name);
 		//this.setTemporalCategory(TemporalCategory.IN_OPENING);
-		this.setCategoryByScore(CategoryByScore.REGULAR); 
+		this.setCategoryByScore(new Regular()); 
 		this.setResponsible(responsible);
 		this.setDateCreation(new Date());
 		this.setComments(new ArrayList<Comment>());
@@ -114,15 +114,8 @@ public class Restaurant implements Commentable {
 	
 	public void addComment(Comment aComment) {
 		this.getComments().add(aComment);
+		this.getCategoryByScore().recalculateCategoryByScore(this.getComments(), this);
 	}
 	
-	public void recalculateCategoryByScore() {
-		
-		//los extremos no se pueden alcanzar si el restaurante está en el sistema hace menos de un año
-		
-		//newScore = recorro la lista de comentarios (tengo que considerar los comentarios de los platos?) y hago el promedio con los score
-		//newCategory = armar relacion entre el puntaje obtenido y la categoria
-		//this.setCategoryByScore(categoryByScore);
-	}
-
+	
 }

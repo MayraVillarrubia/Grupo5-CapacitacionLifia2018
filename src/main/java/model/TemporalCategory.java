@@ -1,5 +1,6 @@
 package model;
 
-public class TemporalCategory {
-
+public enum TemporalCategory {
+	
+	IN_OPENING, NEW, INNOVATOR, STABLE_FOOD, TEACHERS_OF_THE_KITCHEN, TAKES_YEARS_IN_BUSINESS
 }

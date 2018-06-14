@@ -27,7 +27,7 @@ public class Responsible extends User{
 	}
 	
 	@Override
-	public void makeACommentOfDish(String description, Dish dish,Integer score) throws DistanceException {
+	public void makeACommentOfDish(String description, Dish dish, Vote score) throws DistanceException {
 		//calcularDistancia() no está implemmentado
 		//if ((calcularDistancia(dish.getRestaurant().getLocation(), this.getRestaurant().getLocation()) > 1000 )) {
 			Comment com = new Comment(this, description, dish, score);
@@ -41,7 +41,7 @@ public class Responsible extends User{
 	}			
 		
 	@Override
-	public void makeACommentOfRestaurant(String description, Restaurant rest, Integer score) throws DistanceException{
+	public void makeACommentOfRestaurant(String description, Restaurant rest, Vote score) throws DistanceException{
 		//calcularDistancia() no está implemmentado
 		//if ((calcularDistancia(rest.getLocation(), this.getRestaurant().getLocation()) > 1000 )) {
 			Comment com = new Comment(this, description, rest, score);
